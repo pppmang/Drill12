@@ -32,6 +32,8 @@ def init():
     boy = Boy()
     game_world.add_object(boy, 1)
     game_world.add_collision_pairs('boy:ball', boy, None)
+    game_world.add_collision_pairs('boy:zombie', boy, None)
+
 
     # fill here
     # 공을 바닥에 30개 뿌린다.
@@ -42,6 +44,8 @@ def init():
 
     zombies = [Zombie() for _ in range(5)]
     game_world.add_objects(zombies, 1)
+    for zombie in zombies:
+        game_world.add_collision_pairs('boy:zombie', None, zombie)
 
 
 def finish():

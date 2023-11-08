@@ -44,14 +44,21 @@ class Zombie:
         self.x = clamp(800, self.x, 1600)
         pass
 
-
     def draw(self):
         if self.dir < 0:
             Zombie.images['Walk'][int(self.frame)].composite_draw(0, 'h', self.x, self.y, 200, 200)
         else:
             Zombie.images['Walk'][int(self.frame)].draw(self.x, self.y, 200, 200)
+        draw_rectangle(*self.get_bb())  # 튜플을 풀어서 분리하여 인자로 제공.
 
+    def get_bb(self):
+        return self.x - 65, self.y - 95, self.x + 65, self.y + 95   # 왼쪽 아래 좌표 (x, y), 오른쪽 위 좌표 (x, y)
 
     def handle_event(self, event):
         pass
+
+    def handle_collision(self, group, other):
+        if group == 'boy:zombie':
+            game_framework.quit()
+
 
