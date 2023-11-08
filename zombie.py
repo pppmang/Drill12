@@ -61,4 +61,8 @@ class Zombie:
         if group == 'boy:zombie':
             game_framework.quit()
 
+        if group == 'ball:zombie':
+            Zombie.images['Walk'][int(self.frame)].draw(self.x, self.y, 100, 100)
+
+
 

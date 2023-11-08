@@ -2,6 +2,8 @@
 
 from pico2d import get_time, load_image, load_font, clamp, SDL_KEYDOWN, SDL_KEYUP, SDLK_SPACE, SDLK_LEFT, SDLK_RIGHT, \
     draw_rectangle
+
+import zombie
 from ball import Ball
 import game_world
 import game_framework
@@ -210,7 +212,6 @@ class Boy:
     # fill here
     def get_bb(self):
         return self.x - 20, self.y - 50, self.x + 20, self.y + 50   # 왼쪽 아래 좌표 (x, y), 오른쪽 위 좌표 (x, y)
-
 
     def handle_collision(self, group, other):
         if group == 'boy:ball':

@@ -1,6 +1,9 @@
 from pico2d import *
+
 import game_world
 import game_framework
+from boy import Boy
+
 
 class Ball:
     image = None
@@ -27,3 +30,7 @@ class Ball:
     def handle_collision(self, group, other):
         if group == 'boy:ball':
             game_world.remove_object(self)
+
+        while Boy.fire_ball():
+            if group == 'ball:zombie':
+                game_world.remove_object(self)
